@@ -26,6 +26,7 @@ public class NumberWizard : MonoBehaviour
 		print ("Select a range by pressing numbers 1 through 5 on your keyboard.");
 		print ("1 = 1 - 1000, 2 = 1001 - 2000, 3 = 2001 - 3000, 4 = 3001 - 4000, 5 = 4001 - 5000.");
 		print ("Once I have guessed your number, press Return to let me know :)");
+		print ("You can also press the space bar at any time to reset.");
 	}
 
 	int CompGuess ()
@@ -35,7 +36,6 @@ public class NumberWizard : MonoBehaviour
 		} else if (Input.GetKeyDown (KeyCode.Alpha2)) {
 			return Random.Range (1001, 2000);
 		} else if (Input.GetKeyDown (KeyCode.Alpha3)) {
-			print ("You have pressed key 3.");
 			return Random.Range (2001, 3000);
 		} else if (Input.GetKeyDown (KeyCode.Alpha4)) {
 			return Random.Range (3001, 4000);
@@ -43,6 +43,7 @@ public class NumberWizard : MonoBehaviour
 			{
 			return Random.Range (4001, 5000);
 		}
+
 	}
 
 	void Update ()
@@ -96,12 +97,19 @@ public class NumberWizard : MonoBehaviour
 			max = 0;
 			guess = 0;
 			StartGame ();
+		} else if (Input.GetKeyDown (KeyCode.Space)) {
+			print ("Reset!");
+			min = 0;
+			max = 0;
+			guess = 0;
+			StartGame ();
 		}
 	}
-	
+
 	void nextGuess ()
 	{
 		print ("Is the number higher or lower than " + guess);
 		print ("Up arrow for higher, down for lower, return for equals.");
 	}
+
 }
